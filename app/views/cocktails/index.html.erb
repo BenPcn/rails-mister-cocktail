@@ -1,0 +1,9 @@
+<br>
+<% @cocktails.each do |cocktail| %>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card text-center padded features cocktail">
+      <h2><%= cocktail.name.capitalize %></h2>
+      <p><%= link_to "See more", cocktail_path(cocktail) %></p>
+    </div>
+  </div>
+<% end %>

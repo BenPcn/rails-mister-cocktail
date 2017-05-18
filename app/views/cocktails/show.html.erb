@@ -1,0 +1,14 @@
+<div class="cocktail">
+  <h2><%= @cocktail.name %></h2>
+  <hr>
+  <h3>On met quoi dedans ?</h3>
+  <% @cocktail.doses.each do |dose| %>
+    <p><%= dose.ingredient.name.capitalize %> | <%= dose.description.capitalize %> | <%= link_to "Supprimer la dose", dose_path(dose), class: "btn-secondary btn-sm", method: :delete, data: { confirm: "Sûr de toi ?"} %>
+  <% end %>
+  <br>
+  <br>
+  <p><%= link_to "Ajouter une dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+  <%= link_to "Retour", cocktails_path, class: "btn btn-primary" %></p>
+</div>
+
+
