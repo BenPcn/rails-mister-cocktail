@@ -1,9 +1,11 @@
 <br>
 <% @cocktails.each do |cocktail| %>
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card cocktail" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 50%), url(<%= image_tag 'depardieu.jpg' %>);">
+    <div class="card cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(cocktail.photo.path, height: 300, width: 400, crop: :scale) unless cocktail.photo.nil? %>')">
       <div class="card-category"><%= cocktail.name.capitalize %></div>
-      <div class="card-description"><%= link_to "See more", cocktail_path(cocktail) %></div>
+      <div class="card-description btn-success btn-sm"><%= link_to "See more", cocktail_path(cocktail) %>
+      </div>
     </div>
   </div>
 <% end %>
+

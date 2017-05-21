@@ -1,14 +1,21 @@
-<div class="cocktail">
-  <h2><%= @cocktail.name %></h2>
-  <hr>
-  <h3>On met quoi dedans ?</h3>
-  <% @cocktail.doses.each do |dose| %>
-    <p><%= dose.ingredient.name.capitalize %> | <%= dose.description.capitalize %> | <%= link_to "Supprimer la dose", dose_path(dose), class: "btn-secondary btn-sm", method: :delete, data: { confirm: "Sûr de toi ?"} %>
-  <% end %>
-  <br>
-  <br>
-  <p><%= link_to "Ajouter une dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
-  <%= link_to "Retour", cocktails_path, class: "btn btn-primary" %></p>
+<div class="col-md-offset-3 col-xs-12 col-md-6">
+  <div class="card-big cocktail">
+    <h2><%= @cocktail.name %></h2>
+    <hr>
+    <% if @cocktail.photo? %>
+      <%= cl_image_tag @cocktail.photo.path, width: 150, height: 225, crop: :fill %>
+    <% end %>
+    <h3>On met quoi dedans ?</h3>
+    <hr>
+    <% @cocktail.doses.each do |dose| %>
+      <p><%= image_tag dose.ingredient.api_pic, class: "avatar-large" %><p>
+      <p><%= dose.ingredient.name.capitalize %> | <%= dose.description.capitalize %> | <%= link_to "Supprimer la dose", dose_path(dose), class: "btn-secondary btn-sm", method: :delete, data: { confirm: "Sûr de toi ?"} %></p>
+      <hr>
+    <% end %>
+    <br>
+    <p><%= link_to "Ajouter une dose", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+    <%= link_to "Retour", cocktails_path, class: "btn btn-primary" %></p>
+  </div>
 </div>
 
 
